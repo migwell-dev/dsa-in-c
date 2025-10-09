@@ -1,10 +1,18 @@
 #ifndef _LIST_H
+#define _LIST_H
 
-struct Node;
-typedef struct Node *ptrToNode;
+#include <stdlib.h>
+
+typedef int ElementType;
+
+struct Node {
+    ElementType element;
+    struct Node* next;
+};
+
+typedef struct Node* ptrToNode;
 typedef ptrToNode List;
 typedef ptrToNode Position;
-typedef int ElementType;
 
 List makeEmpty(List l);
 int isEmpty(List l);
@@ -20,4 +28,3 @@ Position advance(Position p);
 ElementType retrieve(Position p);
 
 #endif
-
