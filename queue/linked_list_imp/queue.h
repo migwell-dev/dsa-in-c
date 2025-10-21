@@ -11,8 +11,7 @@ typedef struct {
     Node* rear;
 } QueueRecord;
 
-typedef QueueRecord* ptrToQueue;
-typedef ptrToQueue Queue;
+typedef QueueRecord* Queue;
 
 Queue createQueue();
 int isEmpty(Queue q);
