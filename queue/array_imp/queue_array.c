@@ -1,4 +1,5 @@
 #include "queue_array.h"
+#include <stdio.h>
 #define MIN_QUEUE_SIZE 5
 
 struct QueueRecord {
@@ -25,7 +26,35 @@ static int succ(int value, Queue q) {
   return value;
 }
 
-/*
- * checks if q->rear + 1 == limit of queue_array
- * if it is, 
- * */
+void enqueue(int element, Queue q) {
+  if (isFull(q)) {
+    printf("Queue is full\n");
+    return;
+  } else {
+    q->size++;
+    q->rear = succ(q->rear, q);
+    q->array[q->rear] = element;
+  }
+}
+
+void dequeue(Queue q) {
+  if (isEmpty(q)) {
+    printf("Queue is empty\n");
+    return;
+  } else {
+    q->size--;
+    q->front = succ(q->front, q);
+  }
+}
+
+int frontAndDequeue(Queue q) {
+  if (isEmpty(q)) {
+    printf("Queue is empty\n");
+    return -1;
+  } else {
+    int frontElement = q->array[q->front];
+    q->size--;
+    q->front = succ(q->front, q);
+    return frontElement;
+  }
+}
